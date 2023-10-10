@@ -314,13 +314,13 @@
 <section class="hero is-small">
   <div class="hero-body">
     <div class="container is-max-desktop is-centered has-text-centered">
-      <h2 class="title is-3", id="attack">An Extermely Simple & Effective Generation Exploitation Attack</h2>
+      <h2 class="title is-3", id="attack">An Extremely Simple & Effective Generation Exploitation Attack</h2>
       <span style="color: purple;">(Our attack costs < 1 minute per example, on a single A100 GPU.)</span>
       
       <div class="content has-text-justified">
         <br>
         <p>
-          Our generation exploitation attack explores various generation strategies, primarily centered around the system prompt and decoding strategies. Regarding the system prompt, we consider either 1) prepending it before the user instruction, or 2) <b> not including it</b>. In terms of decoding strategies, we experiment with the <b>temperature samping, top-p sampling and top-k sampling with different hyper-parameters</b>. 
+          Our generation exploitation attack explores various generation strategies, primarily centered around the system prompt and decoding strategies. Regarding the system prompt, we consider either 1) prepending it before the user instruction, or 2) <b> not including it</b>. In terms of decoding strategies, we experiment with the <b>temperature sampling, top-p sampling and top-k sampling with different hyper-parameters</b>. 
         </p>  
           
         <p> Our evaluation uses the <a href="https://github.com/Princeton-SysML/Jailbreak_LLM/blob/main/data/MaliciousInstruct.txt">MaliciousInstruct dataset</a> that contains 100 malicious instructions of 10 different malicious intents, and covers the following 11 models: <a href="https://lmsys.org/blog/2023-03-30-vicuna/">Vicuna</a> (7B, 13B, and 33B), <a href="https://www.mosaicml.com/blog/mpt-7b">MPT</a> (7B and 30B), <a href="https://falconllm.tii.ae/">Falcon</a> (7B and 40B), and <a href="https://ai.meta.com/llama/">LLaMA2</a> (7B, 13B, 7B-chat, and 13B-chat). Note that among all the models, only LLaMA2-7B-chat and LLaMA2-13B-chat have been explicitly noted to have undergone safety alignment. For these two models, we sample 8 times for each decoding variant to further boost the attack performance.
@@ -337,7 +337,7 @@
           </div>
         </div>
 
-        <p>As shown, we are able to boost the attack success rate for 11 models to >95% with our generation exploitation attack. <span style="color: red;">Alarmingly, for models that have undergone safety alignement (marked with "♠"), <b>a simple exploitation of generation variants increases the risk from 0% to 95%!     </b></span>  Human evaluation further shows that among the misaligned output, more than 50% of them provide harmful instructions.</p>
+        <p>As shown, we are able to boost the attack success rate for 11 models to >95% with our generation exploitation attack. <span style="color: red;">Alarmingly, for models that have undergone safety alignment (marked with "♠"), <b>a simple exploitation of generation variants increases the risk from 0% to 95%!     </b></span>  Human evaluation further shows that among the misaligned output, more than 50% of them provide harmful instructions.</p>
         
         <p>Moreover, our generation exploitation attack consistently outperforms the SOTA attack by <a href="https://llm-attacks.org/">Zou et al. </a>,
           while its compute time is an order-of-magnitude less (around 30x).</p>
@@ -365,7 +365,7 @@
               <th>Category</th>
               <th>Malicious Instruction</th>
               <th><span style="color: green">Default Generation</span> <br>(top-p=0.9, temperature=0.1)</th>
-              <th><span style="color: red">Explotied Generation</span> <br>(our attack)</th>
+              <th><span style="color: red">Exploited Generation</span> <br>(our attack)</th>
             </tr>
         </thead>
         <tbody>
@@ -409,9 +409,7 @@
       
       <div class="content has-text-justified">
         <p>
-          We acknowledge that this study contains information that has the potential to enable users to generate harmful content using certain open-source LLMs. Despite the risks involved, we believe it to be necessary to disclose this research in full, as our study highlights a significant and potentially CATASTROPHIC shortcoming in the current safety evaluation and alignment procedures for open-source LLMs.
-        <p>
-          Consequently, we strongly advocate the adoption of a more comprehensive red-teaming approach, to comprehensively evaluate model risks across a spectrum of generation strategies. Furthermore, we recommend implementing our generation-aware alignment approach prior to the model release as a proactive countermeasure.
+          We acknowledge that this study contains information that has the potential to enable users to generate harmful content using certain open-source LLMs. Despite the risks involved, we believe it to be necessary to disclose this research in full, as our study highlights a significant and potentially CATASTROPHIC shortcoming in the current safety evaluation and alignment procedures for open-source LLMs. Consequently, we strongly advocate the adoption of a more comprehensive red-teaming approach, to comprehensively evaluate model risks across a spectrum of generation strategies. Furthermore, we recommend implementing our generation-aware alignment approach prior to the model release as a proactive countermeasure.
           <p>
             This project is supported by an NSF CAREER award, a Sloan Research Fellowship, a Meta research grant, and a Princeton SEAS Innovation Grant. We would like to extend our sincere appreciation to <a href="https://zwcolin.github.io/">Zirui Wang</a>, <a href="https://howard-yen.github.io/">Howard Yen</a>, and <a href="hhttps://ahjwang.github.io/">Austin Wang</a> for their help in the human evaluation study.  
       </div>
