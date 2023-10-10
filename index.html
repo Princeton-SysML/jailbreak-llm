@@ -301,7 +301,7 @@
           <!-- top-p sampling with p=0.9 and temperature=0.1 and always prepending a system prompt (a guideline intentionally prepended to steer model generation):  -->
           <ul>
             <li>In Section 4.1: <i>"For decoding, we set temperature to 0.1 and use nucleus sampling with top-p set to 0.9"</i>;</li>
-            <li>In Appendix A.3.7: <i>"While collecting generations, we append a system prompt prior to the prompt for evaluation"</i>.</li>
+            <li>In Appendix A.3.7: <i>"While collecting generations, we append a system prompt prior to the prompt for evaluation"</i>. (The system prompt is a guideline intentionally prepended to steer LLMs towards helpful and harmless generation.)</li>
           </ul>
 
           <p> While pragmatic, this approach risks missing cases where the model's alignment substantially deteriorates with other generation strategies, which motivates our generation exploitation attack. 
@@ -315,7 +315,7 @@
   <div class="hero-body">
     <div class="container is-max-desktop is-centered has-text-centered">
       <h2 class="title is-3", id="attack">An Extermely Simple & Effective Generation Exploitation Attack</h2>
-      <span style="color: purple;">(Our attack costs roughly 1 minute per example, on a single A100 GPU.)</span>
+      <span style="color: purple;">(Our attack costs < 1 minute per example, on a single A100 GPU.)</span>
       
       <div class="content has-text-justified">
         <br>
@@ -323,11 +323,11 @@
           Our generation exploitation attack explores various generation strategies, primarily centered around the system prompt and decoding strategies. Regarding the system prompt, we consider either 1) prepending it before the user instruction, or 2) <b> not including it</b>. In terms of decoding strategies, we experiment with the <b>temperature samping, top-p sampling and top-k sampling with different hyper-parameters</b>. 
         </p>  
           
-        <p> Our evaluation uses the <a href="https://github.com/Princeton-SysML/Jailbreak_LLM/blob/main/data/MaliciousInstruct.txt">MaliciousInstruct dataset</a> that contains 100 malicious instructions, and covers the following 11 models: <a href="https://lmsys.org/blog/2023-03-30-vicuna/">Vicuna</a> (7B, 13B, and 33B), <a href="https://www.mosaicml.com/blog/mpt-7b">MPT</a> (7B and 30B), <a href="https://falconllm.tii.ae/">Falcon</a> (7B and 40B), and <a href="https://ai.meta.com/llama/">LLaMA2</a> (7B, 13B, 7B-chat, and 13B-chat). Note that among all the models, only LLaMA2-7B-chat and LLaMA2-13B-chat have been explicitly noted to have undergone safety alignment. For these two models, we sample 8 times for each decoding variant to further boost the attack performance.
+        <p> Our evaluation uses the <a href="https://github.com/Princeton-SysML/Jailbreak_LLM/blob/main/data/MaliciousInstruct.txt">MaliciousInstruct dataset</a> that contains 100 malicious instructions of 10 different malicious intents, and covers the following 11 models: <a href="https://lmsys.org/blog/2023-03-30-vicuna/">Vicuna</a> (7B, 13B, and 33B), <a href="https://www.mosaicml.com/blog/mpt-7b">MPT</a> (7B and 30B), <a href="https://falconllm.tii.ae/">Falcon</a> (7B and 40B), and <a href="https://ai.meta.com/llama/">LLaMA2</a> (7B, 13B, 7B-chat, and 13B-chat). Note that among all the models, only LLaMA2-7B-chat and LLaMA2-13B-chat have been explicitly noted to have undergone safety alignment. For these two models, we sample 8 times for each decoding variant to further boost the attack performance.
         </p>
 
         <div class="container is-max-desktop">
-          <div class="hero-body">
+          <div>
       
             <img src="./static/images/results.png" alt="teaser">
                   
@@ -342,7 +342,7 @@
         <p>Moreover, our generation exploitation attack consistently outperforms the SOTA attack by <a href="https://llm-attacks.org/">Zou et al. </a>,
           while its compute time is an order-of-magnitude less (around 30x).</p>
 
-        <p> Here are 10 examples for our attack on the LLaMA2-7B-chat model, each for a distinct malicious intent. Please note that these responses do contain content that may be offensive.
+        <p> Here are 10 examples for our attack on the LLaMA2-7B-chat model, each for a distinct malicious intent. <b>Please note that these responses do contain content that may be harmful.</b>
 
 
           <label for="select-data">You can select the type of malicious intent from the dropdown list:</label>
