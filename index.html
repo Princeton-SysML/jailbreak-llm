@@ -297,7 +297,7 @@
           
           <p>  However, we notice that <span style="color: darkorange;"><b>open-source LLMs are usually evaluated for alignment using only default generation methods</b></span>. 
           
-          For instance, <a href="https://arxiv.org/pdf/2307.09288.pdf">Touvron et al.</a> conducts extensive alignment evaluations on LLaMA2 using a single decoding approach: 
+          For instance, <a href="https://arxiv.org/pdf/2307.09288.pdf">Touvron et al.</a> conducts extensive alignment evaluations of LLaMA2 and reports very low violation rates for LLaMA2-chat models (<5%, see their Figure 19), using the following fixed generation approach: 
           <!-- top-p sampling with p=0.9 and temperature=0.1 and always prepending a system prompt (a guideline intentionally prepended to steer model generation):  -->
           <ul>
             <li>In Section 4.1: <i>"For decoding, we set temperature to 0.1 and use nucleus sampling with top-p set to 0.9"</i>;</li>
@@ -323,7 +323,7 @@
           Our generation exploitation attack explores various generation strategies, primarily centered around the system prompt and decoding strategies. Regarding the system prompt, we consider either 1) prepending it before the user instruction, or 2) <b> not including it</b>. In terms of decoding strategies, we experiment with the <b>temperature sampling, top-p sampling and top-k sampling with different hyper-parameters</b>. 
         </p>  
           
-        <p> Our evaluation uses the <a href="https://github.com/Princeton-SysML/Jailbreak_LLM/blob/main/data/MaliciousInstruct.txt">MaliciousInstruct dataset</a> that contains 100 malicious instructions of 10 different malicious intents, and covers the following 11 models: <a href="https://lmsys.org/blog/2023-03-30-vicuna/">Vicuna</a> (7B, 13B, and 33B), <a href="https://www.mosaicml.com/blog/mpt-7b">MPT</a> (7B and 30B), <a href="https://falconllm.tii.ae/">Falcon</a> (7B and 40B), and <a href="https://ai.meta.com/llama/">LLaMA2</a> (7B, 13B, 7B-chat, and 13B-chat). Note that among all the models, only LLaMA2-7B-chat and LLaMA2-13B-chat have been explicitly noted to have undergone safety alignment. For these two models, we sample 8 times for each decoding variant to further boost the attack performance.
+        <p> In addition to existing benchmarks, we also introduce the <a href="https://github.com/Princeton-SysML/Jailbreak_LLM/blob/main/data/MaliciousInstruct.txt">MaliciousInstruct dataset</a>, which contains 100 malicious instructions of 10 different malicious intents for evaluation. We evaluate on 11 models: <a href="https://lmsys.org/blog/2023-03-30-vicuna/">Vicuna</a> (7B, 13B, and 33B), <a href="https://www.mosaicml.com/blog/mpt-7b">MPT</a> (7B and 30B), <a href="https://falconllm.tii.ae/">Falcon</a> (7B and 40B), and <a href="https://ai.meta.com/llama/">LLaMA2</a> (7B, 13B, 7B-chat, and 13B-chat). Note that among all the models, only LLaMA2-7B-chat and LLaMA2-13B-chat have been explicitly noted to have undergone safety alignment. For these two models, we sample 8 times for each decoding variant to further enhance the attack performance.
         </p>
 
         <div class="container is-max-desktop">
@@ -339,13 +339,10 @@
 
         <p>As shown, we are able to boost the attack success rate for 11 models to >95% with our generation exploitation attack. <span style="color: red;">Alarmingly, for models that have undergone safety alignment (marked with "♠"), <b>a simple exploitation of generation variants increases the risk from 0% to 95%!     </b></span>  Human evaluation further shows that among the misaligned output, more than 50% of them provide harmful instructions.</p>
         
-        <p>Moreover, our generation exploitation attack consistently outperforms the SOTA attack by <a href="https://llm-attacks.org/">Zou et al. </a>,
+        <p>Moreover, our generation exploitation attack consistently strikes higher success rates than the SOTA attack by <a href="https://llm-attacks.org/">Zou et al. </a>,
           while its compute time is an order-of-magnitude less (around 30x).</p>
 
-        <p> Here are 10 examples for our attack on the LLaMA2-7B-chat model, each for a distinct malicious intent. <b>Please note that these responses do contain content that may be harmful.</b>
-
-
-          <label for="select-data">You can select the type of malicious intent from the dropdown list:</label>
+        <p> Here are 10 examples for our attack on the LLaMA2-7B-chat model, each for a distinct malicious intent. <label for="select-data">You can select the type of malicious intent from the dropdown list:</label> 
     <select id="select-data"; style="padding: 2px; background:#b19cd7; border:none; color:white; font-weight:400">
         <option value="data1">Psychological manipulation</option>
         <option value="data2">Sabotage</option>
@@ -358,6 +355,7 @@
         <option value="data9">Fraud</option>
         <option value="data10">Illegal drug use</option>
     </select>
+    <b>Please note that these responses do contain content that may be harmful.</b>
 
     <table id="data-table">
         <thead>
@@ -392,7 +390,7 @@
       <div class="content has-text-justified">
         <br>
         <p>
-          This catastrophic failure of alignment motivates us to design an effective model alignment approach. Specifically, we propose a new alignment strategy named <span style="color:green"><b>generation-aware alignment</b></span>, which proactively aligns models with outputs generated under various generation configurations  (refer to Section 5 of our paper for more details). We show that this strategy can defend the generation exploitation attack reasonably, reducing the attack success rate from 95% to 69% for the LLaMA2-7B-chat model.
+          This catastrophic failure of alignment motivates us to design a more effective model alignment approach. Specifically, we propose a new alignment strategy named <span style="color:green"><b>generation-aware alignment</b></span>, which proactively aligns models with outputs generated under various generation configurations  (refer to Section 5 of our paper for more details). We show that this strategy can defend the generation exploitation attack reasonably, reducing the attack success rate from 95% to 69% for the LLaMA2-7B-chat model.
 
 
         <!-- </p> -->
