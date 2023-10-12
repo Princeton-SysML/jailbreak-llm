@@ -243,9 +243,14 @@
 
           </div>
         </div>
+        
+      </div>
+      <div class="content  is-centered has-text-centered">
+        <p> <span style="color: red;"><b> 📢 Content warning: This study contains examples of harmful language</b></span>
       </div>
     </div>
   </div>
+  
 </section>
 
 
@@ -261,11 +266,14 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3", id="overview">Overview</h2>
         <div class="content has-text-justified">
-          <div class="content  is-centered has-text-centered">
-            <p> <span style="color: red;"><b> 📢 Content warning: This study contains examples of harmful language</b></span>
-          </div>
+          
         
-        <p> The rapid progress in open-source large language models (LLMs) is significantly advancing AI development. Extensive efforts have been made before model release to align their behavior with human values, with the primary goal of ensuring their helpfulness and harmlessness. However, even carefully aligned models can be manipulated maliciously, leading to unintended behaviors, known as "jailbreaks". These jailbreaks are typically triggered by specific text inputs, often referred to as adversarial prompts. In this work, we propose the <span style="color: red;"><b>generation exploitation attack</b></span>, an extremely simple approach that disrupts model alignment by only manipulating variations of decoding methods. By exploiting different generation strategies, including varying decoding hyper-parameters and sampling methods, <span style="color: red;"><b>we increase the misalignment rate from 0% to more than 95% across 11 language models</b></span> including LLaMA2, Vicuna, Falcon, and MPT families, outperforming state-of-the-art attacks with </b></span>30x lower computational cost</b></span>. Finally, <span style="color: green;"><b>we propose an effective alignment method</b></span> that explores diverse generation strategies, which can reasonably reduce the misalignment rate under our attack. 
+        <p> The rapid progress in open-source large language models (LLMs) is significantly advancing AI development. Extensive efforts have been made before model release to align their behavior with human values, with the primary goal of ensuring their helpfulness and harmlessness. However, even carefully aligned models can be manipulated maliciously, leading to unintended behaviors, known as "jailbreaks". These jailbreaks are typically triggered by specific text inputs, often referred to as adversarial prompts. In this work, we propose the <span style="color: red;"><b>generation exploitation attack</b></span>, an extremely simple approach that disrupts model alignment by only manipulating variations of decoding methods. 
+          <ul>
+            <li>By exploiting different generation strategies, including varying decoding hyper-parameters and sampling methods, <span style="color: red;"><b>we increase the misalignment rate from 0% to more than 95% across 11 language models</b></span> including LLaMA2, Vicuna, Falcon, and MPT families, outperforming state-of-the-art attacks with </b></span>30x lower computational cost</b></span>.</li>
+            <li><span style="color: green;"><b>We also propose an effective alignment method</b></span> that explores diverse generation strategies, which can reasonably reduce the misalignment rate under our attack. </li>
+          </ul>
+           
         </p>
         </div>
       </div>
@@ -329,7 +337,7 @@
         <div class="container is-max-desktop">
           <div>
       
-            <img src="./static/images/results.png" alt="teaser">
+            <img src="./static/images/result.png" alt="teaser">
                   
 
                   
@@ -420,7 +428,15 @@
 <section class="section is-light" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title", id="reference">BibTeX</h2>
-    <pre><code>@article{
+    <p>If you find our code and paper helpful, please consider citing our work:
+    </p>
+    <pre><code>@misc{huang2023catastrophic,
+      title={Catastrophic Jailbreak of Open-source LLMs via Exploiting Generation}, 
+      author={Yangsibo Huang and Samyak Gupta and Mengzhou Xia and Kai Li and Danqi Chen},
+      year={2023},
+      eprint={2310.06987},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
 }
 </code></pre>
   </div>
